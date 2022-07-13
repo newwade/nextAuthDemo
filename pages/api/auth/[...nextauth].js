@@ -108,4 +108,7 @@ export default NextAuth({
     secret: "test",
     encryption: true,
   },
+  pages: {
+    signIn: "/login",
+  },
 });

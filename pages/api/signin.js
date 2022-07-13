@@ -34,14 +34,14 @@ export default async function Signin(req, res) {
       { id: user._id, username: user.username },
       serverRuntimeConfig.JWT_SECRET,
       {
-        expiresIn: 1800,
+        expiresIn: 60,
       }
     );
     const refresh_token = jwt.sign(
       { id: user._id, username: user.username },
       serverRuntimeConfig.JWT_SECRET,
       {
-        expiresIn: 3600,
+        expiresIn: 90,
       }
     );
 
@@ -50,7 +50,7 @@ export default async function Signin(req, res) {
       username: user.username,
       accessToken: access_token,
       refreshToken: refresh_token,
-      accessTokenExpiresAt: 1800,
+      accessTokenExpiresAt: 60,
     };
 
     return res.status(200).send({ success: true, user: userData });

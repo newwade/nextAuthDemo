@@ -17,13 +17,13 @@ export default function handler(req, res) {
               { id: user.id, username: user.username },
               serverRuntimeConfig.JWT_SECRET,
               {
-                expiresIn: 1800,
+                expiresIn: 60,
               }
             );
             const data = {
               accessToken: access_token,
               refreshToken: token,
-              accessTokenExpiresAt: 1800,
+              accessTokenExpiresAt: 60,
             };
             res.status(200).send({ success: true, ...data });
           }

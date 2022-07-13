@@ -13,13 +13,6 @@ export default function Home() {
   const [username, setUsername] = useState();
   console.log("session", session);
 
-  const handleLogin = () => {
-    signIn("credentials", {
-      callbackUrl: `/Hello`,
-    });
-    2;
-  };
-
   useEffect(() => {
     if (session?.error === "RefreshAccessTokenError") {
       console.log(session);
@@ -31,7 +24,9 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <p>{`logged in as ${username}`}</p>
-      <button onClick={handleLogin}>Signin</button>
+      <Link href="/login">
+        <button>Signin</button>
+      </Link>
     </div>
   );
 }
